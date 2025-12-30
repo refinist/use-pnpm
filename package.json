@@ -1,6 +1,6 @@
 {
   "name": "use-pnpm",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Automatically fetch the latest pnpm version and set packageManager field",
   "keywords": [
     "pnpm",
