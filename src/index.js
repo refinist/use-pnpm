@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { spawn } from 'node:child_process';
-import { log } from './log.js';
+import { log, c } from './log.js';
 export { log };
 
 /**
@@ -49,20 +49,23 @@ export async function usePnpm() {
   const packageManager = `pnpm@${version}`;
   if (pkg.packageManager === packageManager) {
     log.success(`packageManager is already up to date: ${packageManager}`);
-    return;
-  }
-  const oldValue = pkg.packageManager;
-  pkg.packageManager = packageManager;
-  // Preserve original indentation
-  const indent = pkgContent.match(/^(\s+)/m)?.[1] || '  ';
-  writeFileSync(pkgPath, `${JSON.stringify(pkg, null, indent)}\n`);
-  if (oldValue) {
-    log.success(`Updated packageManager: ${oldValue} → ${packageManager}`);
   } else {
-    log.success(`Added packageManager: ${packageManager}`);
+    const oldValue = pkg.packageManager;
+    pkg.packageManager = packageManager;
+    // Preserve original indentation
+    const indent = pkgContent.match(/^(\s+)/m)?.[1] || '  ';
+    writeFileSync(pkgPath, `${JSON.stringify(pkg, null, indent)}\n`);
+    if (oldValue) {
+      log.success(`Updated packageManager: ${oldValue} → ${packageManager}`);
+    } else {
+      log.success(`Added packageManager: ${packageManager}`);
+    }
   }
 
   // Execute pnpm -v to trigger download of the latest version
+  log.info(
+    `Executing ${c.bold}pnpm -v${c.reset}${c.cyan} to trigger Corepack download...`
+  );
   await executePnpmVersion();
 }
 
