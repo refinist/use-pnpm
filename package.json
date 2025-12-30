@@ -16,7 +16,6 @@
   "author": "",
   "type": "module",
   "bin": {
-    "use-pn": "./bin/cli.js",
     "use-pnpm": "./bin/cli.js"
   },
   "files": [
