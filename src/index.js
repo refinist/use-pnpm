@@ -67,6 +67,7 @@ export async function usePnpm() {
     `Executing ${c.bold}pnpm -v${c.reset}${c.cyan} to trigger Corepack download...`
   );
   await executePnpmVersion();
+  log.success('All set! Start your project. Enjoy! 🎉\n');
 }
 
 /**
