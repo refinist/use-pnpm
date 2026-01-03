@@ -20,11 +20,12 @@ The tool will automatically:
 
 ```sh
 ℹ Fetching latest pnpm version...
-ℹ Latest pnpm version: 10.26.2
+ℹ Latest pnpm version: 10.27.0
 ℹ Found package.json: /foo/bar/baz/package.json
-✔ packageManager is already up to date: pnpm@10.26.2
+✔ packageManager is already up to date: pnpm@10.27.0
 ℹ Executing pnpm -v to trigger Corepack download...
-10.26.2
+10.27.0
+✔ All set! Start your project. Enjoy! 🎉
 ```
 
 ## Why?
