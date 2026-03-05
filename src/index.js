@@ -64,7 +64,7 @@ export async function usePnpm() {
 
   // Execute pnpm -v to trigger download of the latest version
   log.info(
-    `Auto-downloading pnpm ${version} via Corepack — sit back, this may take a moment...`
+    `Running ${c.bold}pnpm -v${c.reset}${c.cyan} — Corepack is auto-downloading pnpm ${version}, sit back...`
   );
   await executePnpmVersion();
   log.success('All set! Start your project. Enjoy! 🎉\n');
