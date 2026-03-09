@@ -43,7 +43,7 @@ export async function usePnpm() {
     log.error('package.json not found');
     process.exit(1);
   }
-  log.dim(`Found package.json: ${pkgPath}`);
+  log.info(`Found package.json: ${pkgPath}`);
   const pkgContent = readFileSync(pkgPath, 'utf-8');
   const pkg = JSON.parse(pkgContent);
   const packageManager = `pnpm@${version}`;
@@ -64,7 +64,7 @@ export async function usePnpm() {
 
   // Execute pnpm -v to trigger download of the latest version
   log.info(
-    `Executing ${c.bold}pnpm -v${c.reset}${c.cyan} to trigger Corepack download...`
+    `Running ${c.bold}pnpm -v${c.reset}${c.cyan} — Corepack is auto-downloading pnpm ${version}, sit back...`
   );
   await executePnpmVersion();
   log.success('All set! Start your project. Enjoy! 🎉\n');
